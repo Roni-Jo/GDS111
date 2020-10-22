@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Layout Demo</title>
+    <style>
+        /*CSS will go here*/
+        html,body{
+            height:100%;
+            display: flex;
+            justify-content: center;
+            background-color: grey;
+            background-image: url("Images/Bubble.png");
+            
+        }
+        #container{
+            width:1000px;
+            height:100%;
+            background-color: rgba(0, 255, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+        }
+        #header{
+            background-color: tomato;
+            text-align: center;
+        }
+        #nav{
+            background-color: purple;
+            display: flex;
+            justify-content: center;
+        }
+        #content{
+            background-color: teal;
+            display: flex;
+        }
+        #footer{
+            background-color: yellow;
+            text-align: center;
+            line-height: 100px;
+        }
+        .btn:link{
+            background-color: yellow;
+            color: black;
+            padding: 10px;
+            margin: 20px 20px 20px 0;
+            font-size: larger;
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+            border-radius: 5px;
+            box-shadow: 6px 6px rgba(0, 0, 0, 0.404);
+        }
+        .btn:visited{
+            color: black;
+        }
+        .btn:hover{
+            background-color: darkgrey;
+        }
+        .btn:active{
+            background-color: green;
+        }
+        
+        .content-left{
+            width:500px;
+            height:500px;
+            background-color: darkred;
+        }
+        .content-right{
+            width:500px;
+            height:500px;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>Welcome to the Flexbox Div Page</h1>
+        </div>
+        <div id="nav">
+            <a href="#" class="btn">Home</a>
+            <a href="#" class="btn">Bio</a>
+            <a href="#" class="btn">Images</a>
+            <a href="#" class="btn">Contact</a>
+        </div>
+        <div id="content">
+            <div class="content-left">hi
+                <p style="color: white;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget diam vitae arcu maximus auctor vitae id odio. Mauris ultricies viverra mi tristique dictum. Nullam nec tincidunt mauris. Nullam blandit felis auctor posuere tristique. Aliquam accumsan, libero sed eleifend dignissim, risus felis vestibulum lacus, in vehicula ipsum lectus vitae quam. Donec sodales turpis quis aliquam suscipit. Duis quis eleifend enim. Sed faucibus eu sapien sit amet sagittis. Ut molestie, ex pulvinar tempor tincidunt, massa augue vestibulum felis, tincidunt ultrices libero justo non mi. Aenean eget sem eget orci accumsan interdum vitae vel dui. Aenean elit metus, blandit eu felis vitae, sollicitudin blandit ante. Cras rhoncus, lacus ultricies tincidunt finibus, libero purus sagittis turpis, non mollis lectus mauris eu odio. Ut eleifend risus non sodales sagittis.</p>
+            </div>
+            <div class="content-right">Right content is here
+                <img src="Images/Eyes.0.png" alt="Eyes">
+            </div>
+        </div>
+        <div id="footer">
+            &copy; 2020 Roni-Jo Morrison New England Institute of Technology
+        </div>
+    </div>
+</body>
+</html>
