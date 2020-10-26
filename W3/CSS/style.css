@@ -1,0 +1,29 @@
+html, body{
+    margin: o;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+}
+/* # for ID, . for Class, code type for something not defined */
+
+#Main-Container{
+    width: 1000px;
+    padding: 10px;
+    border: 1px solid black;
+    background-image: url("../Photos/darkness.png")
+}
+#header{
+    height: 100px;
+    background-color:lightseagreen;
+    line-height: 100px;
+    margin: 0;
+    font-family: cursive;
+    font-size: larger;
+}
+#nav-bar{
+    display: flex;
+    justify-content: center;
+    background-color: lightseagreen;
+    border-top: 5px solid black;
+}
