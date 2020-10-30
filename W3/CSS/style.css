@@ -13,6 +13,8 @@ html, body{
     padding: 10px;
     border: 1px solid black;
     background-color: silver;
+   
+    
 }
 #header{
     height: 100px;
@@ -29,16 +31,33 @@ html, body{
     border-top: 10px solid silver;
 }
 
+#content{
+    width: 980px;
+    padding: 10px;
+    background-color: navy;
+    border-bottom: 3px solid silver;
+    border-top: 10px solid silver;
+    color: whitesmoke;
+    
+}
+
+#hobbies{
+    width: 200px;
+    padding: 5px;
+    background-color: teal;
+    float: right;
+}
+
 .btn{
     width: 100px;
-    height: 50px;
-    background-color: darkblue;
+    height: 40px;
+    background-color: royalblue;
     color: white;
     margin-right: 10px;
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-    line-height: 50px;
+    line-height: 40px;
 }
 
 .btn:hover{
@@ -48,11 +67,19 @@ html, body{
 .ans-btn{
     width: 75px;
     height: 25px;
-    background-color: blue;
+    background-color: plum;
     color: white;
 }
 
 .ans-btn:hover{
-    background-color: plum;
+    background-color: blue;
 }
 
+#footer{
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    background-color: lightseagreen;
+    border-top: 10px;
+    line-height: 30px;
+}
