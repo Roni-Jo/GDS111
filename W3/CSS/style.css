@@ -38,14 +38,32 @@ html, body{
     border-bottom: 3px solid silver;
     border-top: 10px solid silver;
     color: whitesmoke;
-    
+    column-count: 2;
+    column-gap: 100px;
+}
+
+img{
+    width: 1005;
+    height: auto;
+}
+
+#bio{
+    width: 500px;
+    padding: 10px;
+    background-color: teal;
+}
+
+.title{
+    background-color: skyblue;
+    width: 200px;
+    padding: 10px;
+
 }
 
 #hobbies{
     width: 200px;
-    padding: 5px;
+    padding: 10px;
     background-color: teal;
-    float: right;
 }
 
 .btn{
