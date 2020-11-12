@@ -23,8 +23,10 @@ function GameObject(){
         this.x += this.vx;
         this.y += this.vy;
 
-        if(this.y > c.height + this.radius){
-            this.y = 0 - this.radius;
+        if(this.y > c.height - this.radius){
+            //this.y = 0 - this.radius;
+            this.y = c.height;
+            this.vy = -this.vy *0.67
         }
     }
 }
@@ -32,6 +34,7 @@ function GameObject(){
 //[] = new Array()//
 var particles = new Array();
 var numOfParticles = 1000;
+var gravity = 1
 
 //sets up the particles//
  for(var i = 0; i<numOfParticles; i++){
@@ -45,6 +48,7 @@ function main(){
     ctx.clearRect(0,0,c.width,c.height);
    //loop through the particles and make them move//
    for(var i = 0; i<particles.length; i++){
+       particles[i].vy += gravity;
        particles[i].move();
        particles[i].drawCircle();
    }
