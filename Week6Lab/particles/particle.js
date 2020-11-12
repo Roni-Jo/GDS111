@@ -8,7 +8,7 @@ function GameObject(){
     this.color = `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`;
     this.x = Math.random() * 800;
     this.y = Math.random() * 600;
-    this.vx = 0;
+    this.vx = Math.random() * (10 - -10) + -10;
     this.vy = this.radius;
 
     this.drawCircle = function(){
