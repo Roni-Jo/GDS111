@@ -38,17 +38,16 @@ html, body{
     border-bottom: 3px solid silver;
     border-top: 10px solid silver;
     color: whitesmoke;
-    column-count: 2;
-    column-gap: 100px;
+
 }
 
 img{
-    width: 1005;
+    width: 980;
     height: auto;
 }
 
 #bio{
-    width: 500px;
+    width: 960px;
     padding: 10px;
     background-color: teal;
 }
@@ -61,7 +60,7 @@ img{
 }
 
 #hobbies{
-    width: 200px;
+    width: 960px;
     padding: 10px;
     background-color: teal;
 }
