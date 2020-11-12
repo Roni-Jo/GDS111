@@ -38,7 +38,8 @@ html, body{
     border-bottom: 3px solid silver;
     border-top: 10px solid silver;
     color: whitesmoke;
-
+    display: flex;
+    
 }
 
 img{
@@ -47,7 +48,7 @@ img{
 }
 
 #bio{
-    width: 960px;
+    width: 500px;
     padding: 10px;
     background-color: teal;
 }
@@ -60,9 +61,9 @@ img{
 }
 
 #hobbies{
-    width: 960px;
+    width: 460px;
     padding: 10px;
-    background-color: teal;
+    background-color: blue;
 }
 
 .btn{

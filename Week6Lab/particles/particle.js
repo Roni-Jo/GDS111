@@ -1,15 +1,21 @@
+//window.onload waits for page to load to run javascript
+window.onload = function(){
 var c = document.querySelector('canvas');
 var ctx = c.getContext('2d');
 var timer = requestAnimationFrame(main)
 
 
+function randomRange(high, low){
+    return Math.random() * (high - low) + low;
+}
+
 function GameObject(){
-    this.radius = Math.random()*3+2;
+    this.radius = Math.random() * 10 + 3;
     this.color = `rgb(${Math.random()*255},${Math.random()*255},${Math.random()*255})`;
-    this.x = Math.random() * 800;
-    this.y = Math.random() * 600;
-    this.vx = Math.random() * (10 - -10) + -10;
-    this.vy = this.radius;
+    this.x = c.width/2; //Math.random() * 800;
+    this.y = c.height/2; //Math.random() * 600;
+    this.vx = randomRange(10,-10); //Math.random() * (10 - -10) + -10;
+    this.vy = randomRange(10,-30); //this.radius;
 
     this.drawCircle = function(){
         ctx.beginPath();
@@ -25,7 +31,7 @@ function GameObject(){
 
         if(this.y > c.height - this.radius){
             //this.y = 0 - this.radius;
-            this.y = c.height;
+            this.y = c.height -  this.radius;
             this.vy = -this.vy *0.67
         }
     }
@@ -53,4 +59,5 @@ function main(){
        particles[i].drawCircle();
    }
     timer = requestAnimationFrame(main);
+}
 }
