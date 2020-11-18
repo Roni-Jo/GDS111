@@ -1,7 +1,6 @@
 
-var c = document.getElementById("myCanvas");
+var c = document.getElementById("Canvas");
 var ctx = c.getContext("2d");
-
 
 
 var rps =[];
@@ -35,45 +34,54 @@ btn[2].addEventListener('click', function(e){
 function play(playersChoice){
     ctx.clearRect(0,0,c.clientWidth,c.height);
     var cpuChoice = Math.floor(Math.random()*2.9999);
+ 
+    ctx.font  = "40px Arial";
+    ctx.fillStyle = "#78dcde";
+    ctx.textAlign = "center";
 
-    ctx.fillStyle = "sky blue"
-    ctx.font  = "40px Arial"
-    ctx.textAlign = "center"
-    //ctx.fillText = ()//
 
     //example of switch case
     switch(playersChoice){
         case 0:
             if(cpuChoice === 0){
-                alert("Computer chose Rock, You Tied!");
+                ctx.fillText("Player chose Rock", c.width/2,c.height/2-100);
+                ctx.fillText("Computer chose Rock, You Tied!", c.width/2,c.height/2);
             }
             else if(cpuChoice === 1){
-                alert("Computer chose paper, You Lose!");
+                ctx.fillText("Player chose Rock", c.width/2,c.height/2-100);
+                ctx.fillText("Computer chose paper, You Lose!", c.width/2,c.height/2);
             }
             else{
-                alert("Computer chose Scissors, You Win!");
+                ctx.fillText("Player chose Rock", c.width/2,c.height/2-100);
+                ctx.fillText("Computer chose Scissors, You Win!", c.width/2,c.height/2);
             }
         break;
         case 1: 
         if(cpuChoice === 0){
-            alert("Computer chose , You Win!");
+            ctx.fillText("Player chose Paper", c.width/2,c.height/2-100);
+            ctx.fillText("Computer chose , You Win!", c.width/2,c.height/2);
         }
         else if(cpuChoice === 1){
-            alert("Computer chose paper, You Tied!");
+            ctx.fillText("Player chose Paper", c.width/2,c.height/2-100);
+            ctx.fillText("Computer chose paper, You Tied!", c.width/2,c.height/2);
         }
         else{
-            alert("Computer chose Scissors, You Lose!");
+            ctx.fillText("Player chose Paper", c.width/2,c.height/2-100);
+            ctx.fillText("Computer chose Scissors, You Lose!", c.width/2,c.height/2);
         }
         break;
         case 2:  
         if(cpuChoice === 0){
-            alert("Computer chose Rock, You Lose");
+            ctx.fillText("Player chose Scissors", c.width/2,c.height/2-100);
+            ctx.fillText("Computer chose Rock, You Lose!", c.width/2,c.height/2);
         }
         else if(cpuChoice === 1){
-            alert("Computer chose paper, You Win!");
+            ctx.fillText("Player chose Scissors", c.width/2,c.height/2-100);
+            ctx.fillText("Computer chose paper, You Win!", c.width/2,c.height/2);
         }
         else{
-            alert("Computer chose Scissors, You Tie!");
+            ctx.fillText("Player chose Scissors", c.width/2,c.height/2-100);
+            ctx.fillText("Computer chose Scissors, You Tied!", c.width/2,c.height/2);
         }
         break;
     }

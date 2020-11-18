@@ -1,6 +1,7 @@
 html,body{
     display: flex;
     justify-content: center;
+    background-color: #026263;
 }
 
 nav{
@@ -9,25 +10,25 @@ nav{
 }
 
 #container{
-    border: 1px solid black;
+    border: 3px solid white;
     padding: 7px;
     width: 1018px;
 }
 
 canvas{
-    border: 1px solid black;
+    border: 3px solid white;
 }
 
 a:link,a:visited{
-    background-color: yellow;
+    background-color: #78dcde;
     text-decoration: none;
-    color: blue;
+    color: black;
     padding: 10px;
     margin: 20px;
     border-radius: 10px;
 }
 
 a:hover{
-    background-color: grey;
-    color: white;
+    background-color: #9fe2e3;
+    color: grey;
 }
