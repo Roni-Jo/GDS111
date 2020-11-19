@@ -1,4 +1,22 @@
+window.onload = function(){
 //Array of  choices
+var c = document.querySelector('canvas');
+var ctx = c.getContext("2d");
+
+var imgCount = 3;
+var images = []
+var timer = requestAnimationFrame(draw);
+
+
+images[0] = new Image()
+images[0].src ='images/rock.jpg';
+
+images[1] = new Image()
+images[1].src ='images/paper.jpg';
+
+images[2] = new Image()
+images[2].src ='images/scissors.jpg';
+
 var rps =[];
 rps[0] = "Rock";
 rps[1] = "paper";
@@ -66,4 +84,12 @@ function play(playersChoice){
         }
         break;
     }
+}
+
+function draw(){
+    ctx.drawImage(images[0], 300, 200);
+    ctx.drawImage(images[1], 400, 200);
+    ctx.drawImage(images[2], 500, 200);
+}
+
 }
