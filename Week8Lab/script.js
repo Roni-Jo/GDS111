@@ -5,6 +5,8 @@ var gravity = 1;
 var asteroids = new Array();
 var numAsteroids = 10;
 var gameOver = false;
+var score = 0;
+
 
 function randomRange(high, low){
     return Math.random() * (high-low) + low
@@ -146,6 +148,13 @@ function keyPressUp(e){
 function main(){
     context.clearRect(0,0,c.width,c.height);
 
+    //display score
+    context.save();
+    context.font = "15px Arial"
+    context.fillStyle  = "white"
+    context.fillText("Score: " + score.toString(), c.width - 150, 30)
+    context.restore();
+
     //ship.vy += gravity;
 
     if(ship.up == true){
@@ -203,6 +212,15 @@ function main(){
 
     timer = requestAnimationFrame(main);
 }
+
+function scoreTimer(){
+    if(gameOver == false){
+        score++;
+        //console.log(score);
+        setTimeout(scoreTimer,1000);
+    }
+}
+scoreTimer();
 
 function detectCollision(distance, calcDistance){
     return distance < calcDistance;
