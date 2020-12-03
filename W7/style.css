@@ -17,7 +17,6 @@ header{
 }
 
 canvas{
-    background-color: white;
     margin-left: 10px;
     margin-bottom: 5px;
     background-image: url("images/shapes.png");
