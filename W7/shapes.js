@@ -19,20 +19,24 @@ window.onload=function(){
         this.b = 279,550;
 
         this.drawBox = function(){
-            
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = 5;
             ctx.save();
             ctx.fillStyle = this.color;
             ctx.fillRect(85,302,this.w,this.h);
             ctx.restore();
-            
+            ctx.strokeRect(85,302,this.w,this.h);
         }
       
         this.drawCircle = function(){
+            ctx.strokeStyle = "red";
+            ctx.lineWidth = 5;
             ctx.beginPath()
             ctx.fillStyle =  this.color;
             ctx.arc(386, 442, this.radius, 0, 2* Math.PI, true);
             ctx.closePath();
             ctx.fill();
+            ctx.stroke();
         }
 
         this.drawLine = function(){
@@ -47,6 +51,8 @@ window.onload=function(){
         this.drawStar = function(){
     
             ctx.fillStyle =this.color;
+            ctx.strokeStyle = "rgb(32,32,32)";
+            ctx.lineWidth = 5;
             ctx.beginPath();
             ctx.moveTo(636,495);
             ctx.lineTo(668,554);
@@ -61,10 +67,13 @@ window.onload=function(){
             ctx.lineTo(635,495);
             ctx.closePath();
             ctx.fill();
+            ctx.stroke();
         }
 
         this.drawPentagon = function(){
             ctx.fillStyle = this.color;
+            ctx.strokeStyle = "00ffff";
+            ctx.lineWidth = 5;
             ctx.beginPath();
             ctx.moveTo(558,309);
             ctx.lineTo(668,284)
@@ -73,6 +82,7 @@ window.onload=function(){
             ctx.lineTo(548,421)
             ctx.closePath(558,309);
             ctx.fill();
+            ctx.stroke();
         }
 
     }
