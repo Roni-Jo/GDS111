@@ -33,20 +33,22 @@ function randomRange(high, low){
 //Class for the Asteroids
 function Asteroid(){
     this.radius = randomRange(10,2);
-    this.x = randomRange(c.width - this.radius, 0 + this.radius);
-    this.y = randomRange(c.height - this.radius, 0 + this.radius) - c.height;
-    this.vx = randomRange(-5, -10);
-    this.vy = randomRange(10,5);
+    this.x = randomRange(c.width - this.radius, 0 + this.radius)+c.width;
+    this.y = randomRange(c.height - this.radius, 0 + this.radius);
+    this.vx = randomRange(10,5);
+    this.vy = randomRange(-5,-10);
     this.color = "white";
 
     this.draw = function(){
+        
         context.save();
         context.beginPath();
         context.fillStyle = this.color;
-        //context.arc(this.x,this.y,this.radius,0,2*Math.PI,true);
-        context.drawImage(cookieSprite, this.x-this.radius,this.y-this.radius, this.radius*2, this.radius*2);
+        context.arc(this.x,this.y,this.radius,0,2*Math.PI,true);
+        
         context.closePath();
         context.fill();
+        context.drawImage(cookieSprite, this.x-this.radius,this.y-this.radius, this.radius*2, this.radius*2);
         context.restore();
     }
 }
@@ -78,7 +80,7 @@ function PlayerShip(){
         context.save();
         context.translate(this.x, this.y);
         //this drws the flame behind the ship
-        if(this.up == true){
+        if(this.right == true){
             context.save();
             //adjust the flame length for a flicker effect
             if(this.flamelength == 30){
@@ -100,10 +102,10 @@ function PlayerShip(){
         context.beginPath();
         
         context.fillStyle = "red";
-        context.moveTo(0, -13);
-        context.lineTo(10, 10);
-        context.lineTo(-10, 10);
-        context.lineTo(0, -13);
+        context.moveTo(-10, -5);
+        context.lineTo(10, 5);
+        context.lineTo(-10, 15);
+        context.lineTo(-10, -5);
         context.closePath();
         context.fill();
 
@@ -113,7 +115,7 @@ function PlayerShip(){
     this.move = function(){
         this.x += this.vx;
         this.y += this.vy;
-        
+        //console.log(c.width,c.height);
         //adds boundaries and keeps ship on the screen
         if(this.y > c.height - 20){
             this.y = c.height - 20;
@@ -155,6 +157,9 @@ function keyPressDown(e){
         if(e.keyCode === 39){
             ship.right = true;
         }
+        if(e.keyCode === 40){
+            ship.down = true;
+        }
     }
     if(gameOver == true){
         if (e.keyCode === 13) {
@@ -193,6 +198,9 @@ function keyPressUp(e){
         if(e.keyCode === 39){
             ship.right = false;
         }
+        if(e.keyCode === 40){
+            ship.down = false;
+        }
     }
 }
 
@@ -204,7 +212,7 @@ gameStates[0] = function(){
     context.font = "30px Arial";
     context.fillStyle = "white";
     context.textAlign = "center";
-    context.fillText("Asteroid Avoider",c.width/2,c.height/2 - 30);
+    /*context.fillText("Asteroid Avoider",c.width/2,c.height/2 - 30);*/
     context.font = "15px Arial";
     context.fillText("Press Enter to Start", c.width/2,c.height/2 + 20);
     context.restore();
@@ -223,20 +231,21 @@ gameStates[1] = function(){
     //ship.vy += gravity;
 
     if(ship.up == true){
-        ship.vy = -10;
+        ship.vy = -5;
+    }
+    else if(ship.down == true){
+        ship.vy = 5;
     }
     else{
-        ship.vy = 3;
+        ship.vy = 0;
     }
 
-    if(ship.left == true){
-        ship.vx = -3;
-    }
-    else if(ship.right == true){
-        ship.vx = 3;
+  
+     if(ship.right == true){
+        ship.vx = 5;
     }
     else{
-        ship.vx = 0;
+        ship.vx = -3;
     }
 
     for(var i = 0; i<asteroids.length; i++){
@@ -246,8 +255,8 @@ gameStates[1] = function(){
         var dist = Math.sqrt((dX*dX)+(dY*dY));
         
         //checks for collision with asteroid and ends game
-        if(detectCollision(dist, (ship.h/2 + asteroids[i].radius))){
-           // console.log("We collided with Asteroid " + i);
+        if(detectCollision(dist, (ship.w/2 + asteroids[i].radius))){
+           //console.log("We collided with Asteroid " + i);
             gameOver = true;
             currentState = 2;
             //document.removeEventListener('keydown', keyPressDown);
@@ -255,14 +264,16 @@ gameStates[1] = function(){
         }
 
         //checks to see if asteroid is off screen
-        if(asteroids[i].y > c.height + asteroids[i].radius){
+        if(asteroids[i].x < -asteroids[i].radius){
             //reset steroids position off screen 
-            asteroids[i].y = randomRange(c.height - asteroids[i].radius, 0 + asteroids[i].radius)-c.height;
-            asteroids[i].x = randomRange(c.width - asteroids[i].radius, 0 + asteroids[i].radius);
+            asteroids[i].y = randomRange(c.height- asteroids[i].radius, 0 + asteroids[i].radius);
+            asteroids[i].x = (randomRange(c.width - asteroids[i].radius, 0 + asteroids[i].radius)+c.width);
+            console.log("offscreen");
         }
         if(gameOver == false){
-            asteroids[i].y += asteroids[i].vy;
+            asteroids[i].x -= asteroids[i].vx;
         }
+       // console.log("Asteroid: "+ i, asteroids[i].x, asteroids[i].y)
         asteroids[i].draw();
     }
 
@@ -323,7 +334,7 @@ function scoreTimer(){
         //console.log(score);
         if(score % 5 == 0){
             numAsteroids += 5;
-            console.log(numAsteroids);
+         //   console.log(numAsteroids);
         }
 
         setTimeout(scoreTimer,1000);

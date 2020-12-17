@@ -1,0 +1,30 @@
+html,body{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+   /* background-image: url("images/space7.jpg");*/
+}
+
+#container{
+    border: 1px solid white;
+    padding: 7px;
+    font-family: 'Langar', cursive;
+    Background-color: grey;
+}
+
+canvas{
+    border: 1px solid white;
+
+}
+
+header{
+    display: flex;
+    justify-content:center;
+    color: white;
+}
+
+footer{
+    color: white;
+    display: flex;
+    justify-content:center;
+}
