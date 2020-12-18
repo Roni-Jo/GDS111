@@ -11,11 +11,13 @@ var currentState = 0;
 var ship;
 var highScore = 0;
 var mainBGImage = new Image();
-mainBGImage.src = "images/rocks.jpg";
+mainBGImage.src = "images/start.jpg";
 var rockSprite = new Image();
 rockSprite.src = "images/rock.png";
 var shipSprite = new Image();
 shipSprite.src = "images/ship3.png";
+var endImage = new Image();
+endImage.src = "images/end.jpg";
 
 //onload event that listens for when image is loaded
 mainBGImage.onload = function(){
@@ -26,6 +28,9 @@ rockSprite.onLoad = function(){
     main()
 }
 shipSprite.onLoad = function(){
+    main()
+}
+endImage.onLoad = function(){
     main()
 }
 
@@ -223,8 +228,8 @@ gameStates[0] = function(){
     context.fillStyle = "white";
     context.textAlign = "center";
     /*context.fillText("Asteroid Avoider",c.width/2,c.height/2 - 30);*/
+    context.fillText("Press Enter to Start", c.width/2,c.height/2 + 50);
     context.font = "15px Arial";
-    context.fillText("Press Enter to Start", c.width/2,c.height/2 + 20);
     context.restore();
 }
 
@@ -300,25 +305,28 @@ gameStates[2] = function(){
     if(score > highScore){
         highScore = score;
         context.save();
+        context.drawImage(endImage, 0,0,c.width,c.height);
         context.font = "30px Arial";
         context.fillStyle = "white";
         context.textAlign = "center";
         context.fillText("Game Over Your score was : " + score.toString() ,c.width/2,c.height/2 - 60);
-        context.fillText("Your New High Score is : " + score.toString() ,c.width/2,c.height/2 - 30);
-        context.fillText("New Record",c.width/2,c.height/2);
+        context.font = "15px";
+        context.fillText("Your New High Score is : " + score.toString() ,c.width/2,c.height/2 - 10);
+        context.fillText("New Record",c.width/2,c.height/2+30);
         context.font = "15px Arial";
-        context.fillText("Press Enter to Play Again", c.width/2,c.height/2 + 20);
+        context.fillText("Press Enter to Play Again", c.width/2,c.height/2 + 160);
         context.restore();
     }
     else{
         context.save();
+        context.drawImage(endImage, 0,0,c.width,c.height);
         context.font = "30px Arial";
         context.fillStyle = "white";
         context.textAlign = "center";
         context.fillText("Game Over Your score was : " + score.toString() ,c.width/2,c.height/2 - 60);
-        context.fillText("Your High Score is : " + highScore.toString() ,c.width/2,c.height/2 - 30);
+        context.fillText("Your High Score is : " + highScore.toString() ,c.width/2,c.height/2 + 30);
         context.font = "15px Arial";
-        context.fillText("Press Enter to Play Again", c.width/2,c.height/2 + 20);
+        context.fillText("Press Enter to Play Again", c.width/2,c.height/2 + 160);
         context.restore();
     }
 
