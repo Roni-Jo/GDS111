@@ -10,6 +10,8 @@ var gameStates = [];
 var currentState = 0;
 var ship;
 var highScore = 0;
+var power;
+var invisable = true;
 var mainBGImage = new Image();
 mainBGImage.src = "images/start.jpg";
 var rockSprite = new Image();
@@ -40,6 +42,23 @@ function randomRange(high, low){
     return Math.random() * (high-low) + low;
 }
 
+//class for power up
+function PowerUp(){
+    this.radius = 15;
+    this.x = randomRange(c.width - this.radius, 0 + this.radius)+c.width;
+    this.y = randomRange(c.height - this.radius, 0 + this.radius);
+    this.vx = randomRange(10,5);
+    this.vy = randomRange(-5,-10);
+    this.color = "white";
+
+    this.draw = function(){
+        context.save();
+        context.beginPath();
+        context.fillStyle = this.color;
+        context.arc(this.x,this.y,this.radius,0,2*Math.PI,true);
+    }
+}
+
 //Class for the Asteroids
 function Asteroid(){
     this.radius = randomRange(10,2);
@@ -64,6 +83,8 @@ function Asteroid(){
 }
 
 function gameStart() {
+    //instance of the power up
+    power = new PowerUp();
     //for loop to create the intances of the asteroids
     for (var i = 0; i < numAsteroids; i++) {
         asteroids[i] = new Asteroid();
@@ -263,6 +284,27 @@ gameStates[1] = function(){
         ship.vx = -3;
     }
 
+    for(var power=0; power<power.length; power++){
+        //distance between power up and ship
+        var dX = ship.x - power.x;
+        var dY = ship.y - power.y;
+        var dist = Math.sqrt((dX*dX)+(dY*dY));
+
+        //power up collision
+        if(detectCollision(dist, (ship.w/2 + power.radius))){
+            invisable = true;
+
+        }
+
+        if(power.x < -power.radius){
+            power.y = randomRange(c.height- power.radius, 0 + power.radius);
+            power.x = (randomRange(c.width - power.radius, 0 + power.radius)+c.width);
+        }
+
+        power.draw();
+
+    }
+
     for(var i = 0; i<asteroids.length; i++){
         //using the distance formula to find distance between ship and asteroid
         var dX = ship.x - asteroids[i].x;
@@ -283,7 +325,7 @@ gameStates[1] = function(){
             //reset steroids position off screen 
             asteroids[i].y = randomRange(c.height- asteroids[i].radius, 0 + asteroids[i].radius);
             asteroids[i].x = (randomRange(c.width - asteroids[i].radius, 0 + asteroids[i].radius)+c.width);
-            console.log("offscreen");
+            //console.log("offscreen");
         }
         if(gameOver == false){
             asteroids[i].x -= asteroids[i].vx;
