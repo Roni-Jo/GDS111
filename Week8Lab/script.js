@@ -12,15 +12,20 @@ var ship;
 var highScore = 0;
 var mainBGImage = new Image();
 mainBGImage.src = "images/rocks.jpg";
-var cookieSprite = new Image();
-cookieSprite.src = "images/cookie.png"
+var rockSprite = new Image();
+rockSprite.src = "images/rock.png";
+var shipSprite = new Image();
+shipSprite.src = "images/ship3.png";
 
 //onload event that listens for when image is loaded
 mainBGImage.onload = function(){
     main();
 }
 
-cookieSprite.onLoad = function(){
+rockSprite.onLoad = function(){
+    main()
+}
+shipSprite.onLoad = function(){
     main()
 }
 
@@ -48,7 +53,7 @@ function Asteroid(){
         
         context.closePath();
         context.fill();
-        context.drawImage(cookieSprite, this.x-this.radius,this.y-this.radius, this.radius*2, this.radius*2);
+        context.drawImage(rockSprite, this.x-this.radius*2,this.y-this.radius*2, this.radius*4, this.radius*4);
         context.restore();
     }
 }
@@ -91,10 +96,10 @@ function PlayerShip(){
             }
             context.fillStyle = "orange";
             context.beginPath();
-            context.moveTo(0, this.flamelength);
-            context.lineTo(5, 5);
-            context.lineTo(-5, 5);
-            context.lineTo(0, this.flamelength);
+            context.moveTo(-this.flamelength, 4);
+            context.lineTo(-10, -2);
+            context.lineTo(-10, 9);
+            context.lineTo(-this.flamelength, 4);
             context.closePath();
             context.fill();
             context.restore();
@@ -109,6 +114,11 @@ function PlayerShip(){
         context.closePath();
         context.fill();
 
+        context.restore();
+
+        context.closePath();
+        context.fill();
+        context.drawImage(shipSprite, this.x-10,this.y-8);
         context.restore();
     }
 

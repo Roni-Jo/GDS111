@@ -2,7 +2,7 @@ html,body{
     display: flex;
     justify-content: center;
     background-color: black;
-   /* background-image: url("images/space7.jpg");*/
+   background-image: url("images/star2.jpg");
 }
 
 #container{
